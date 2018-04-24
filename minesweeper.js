@@ -6,12 +6,13 @@ class Game{
   playMove(rowIndex, columnIndex){
     this._board.flipTile(rowIndex, columnIndex);
 
-    if(this.board.playerBoard[rowIndex][columnIndex] === 'B'){
+    if(this._board.playerBoard[rowIndex][columnIndex] === 'B'){
       console.log('Game over');
       this._board.print();
-    } else if (!hasSafeTiles(this._board)){
+    } else if (!this._board.hasSafeTiles()){
         console.log('You won!');
-    } else {console.log('Current Board');}
+    } else {console.log('Current Board');
+      this._board.print();}
   }
 }
 
@@ -112,11 +113,5 @@ class Board{
   }
 }
 
-let board1 = new Board(2,2,1);
-
-console.log('Player Board: ');
-board1.print();
-
-board1.flipTile(0, 0);
-console.log('Updated Player Board:');
-board1.print();
+const g = new Game(3,3,3);
+g.playMove(0,0);
